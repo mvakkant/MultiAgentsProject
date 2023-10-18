@@ -177,36 +177,7 @@ def betterEvaluationFunction(currentGameState):
     DESCRIPTION: <write something here so we know what you did>
     """
     "*** TTU CS 5368 Fall 2023 YOUR CODE HERE ***"
-    newPos = currentGameState.getPacmanPosition()
-    newFood = currentGameState.getFood().asList()
-
-    minimum_food_list = float('inf')
-    for food1 in newFood:
-        minimum_food_list = min(minimum_food_list, manhattanDistance(newPos, food1))
-
-    g_Dist = 0
-    for ghost in currentGameState.getGhostPositions():
-        g_Dist = manhattanDistance(newPos, ghost)
-        if (g_Dist < 2):
-            return -float('inf')
-
-    balancefood = currentGameState.getNumFood()
-    caps_Left = len(currentGameState.getCapsules())
-
-    food_balanceMultiplier = 950050
-    caps_balanceMultiplier = 10000
-    food_DistMultiplier = 950
-
-    additional_Factors = 0
-    if currentGameState.isLose():
-        additional_Factors -= 50000
-    elif currentGameState.isWin():
-        additional_Factors += 50000
-
-    return 1.0/(balancefood + 1) * food_balanceMultiplier + g_Dist + \
-           1.0/(minimum_food_list + 1) * food_DistMultiplier + \
-           1.0/(caps_Left + 1) * caps_balanceMultiplier + additional_Factors
-
     util.raiseNotDefined()
+
 # Abbreviation
 better = betterEvaluationFunction
